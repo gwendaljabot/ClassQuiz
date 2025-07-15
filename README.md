@@ -45,7 +45,7 @@ quiz, so students can compete with their knowledge against each other.
 
 ## TODO 
 - Configurer le fichier .env avec les bonnes variables (voir si OPENQUIZ_URL est suffisant pour accès via un subfolder)
-
+- Voir autre modif de https://github.com/mawoka-myblock/ClassQuiz/compare/master...luiz-surian-claro:OpenQuiz:master à reprendre
 
 ## Try it
 

@@ -13,6 +13,8 @@ services:
     depends_on:
       - redis
       - api
+    env_file:
+      - ./env
     environment:
       REDIS_URL: redis://redis:6379/0?decode_responses=True
       API_URL: http://api:80
@@ -21,6 +23,8 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: &restart always
+    env_file:
+      - ./env
     depends_on: &depends
       - db
       - redis
@@ -36,14 +40,14 @@ services:
       # -- DON'T CHANGE TILL HERE ---
 
       # --- GENERAL CONFIG ---
-      ROOT_ADDRESS: "https://classquiz.de" # CHANGE IT (without a "/" at the end)
+      ROOT_ADDRESS: "${OPENQUIZ_URL}" # CHANGE IT (without a "/" at the end)
 
       # --- MAIL CONFIG ---
-      MAIL_PORT: "587"
-      MAIL_ADDRESS: "email@email@email.email"
-      MAIL_PASSWORD: "PASSWORT"
-      MAIL_USERNAME: "email@email@email.email"
-      MAIL_SERVER: "smtp.email.email"
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_ADDRESS: ${MAIL_ADDRESS}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      MAIL_USERNAME: ${MAIL_USERNAME}
+      MAIL_SERVER:  ${MAIL_SERVER}
       SKIP_EMAIL_VERIFICATION: "True" # Does the user have to confirm its email by clicking a link?
 
       # --- EXTERNAL API CONFIG ---
@@ -99,6 +103,8 @@ services:
     restart: always
     volumes:
       - ./Caddyfile-docker:/etc/caddy/Caddyfile
+    environment:
+      - TZ=Europe/Paris
     ports:
       - "8000:8080" # The 8000 can be changed.
   meilisearch:

@@ -43,6 +43,10 @@ You can create quizzes and play them remotely with other people.
 It is mainly made for teachers who create a
 quiz, so students can compete with their knowledge against each other.
 
+## TODO 
+- Configurer le fichier .env avec les bonnes variables (voir si OPENQUIZ_URL est suffisant pour accès via un subfolder)
+
+
 ## Try it
 
 There is a hosted version at [classquiz.de](https://classquiz.de?utm_medium=Github&utm_source=Readme). The server is
